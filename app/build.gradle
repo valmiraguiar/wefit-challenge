@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -39,4 +42,15 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //Fragment
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //Tests
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
 }
