@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WeFit</string>
+
+    <string name="we">We</string>
+    <string name="fit">Fit</string>
+    <string name="favorite">Favoritar</string>
+
+    <string name="repository_icon_description">Ícone de Repositório</string>
+    <string name="configuration_icon_description">Ícone de configuração</string>
 </resources>

@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_temp"
+        android:icon="@drawable/ic_github"
         android:title="GIT" />
 
     <item
         android:id="@+id/navigation_favorite"
-        android:icon="@drawable/ic_temp"
+        android:icon="@drawable/ic_favorite"
         android:title="FAV" />
 
 </menu>

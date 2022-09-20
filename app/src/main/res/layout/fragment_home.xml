@@ -6,9 +6,9 @@
     android:backgroundTint="@color/gray_100"
     tools:context=".HomeFragment">
 
-    <TextView
+    <com.airbnb.epoxy.EpoxyRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="HOME FRAGMENT" />
+        android:layout_marginBottom="16dp" />
 
 </FrameLayout>
