@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Thread.sleep(200)
+        Thread.sleep(1200)
         setTheme(R.style.Theme_Wefitchallenge)
 
         val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
