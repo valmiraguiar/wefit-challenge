@@ -4,13 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/gray_100"
-    tools:context=".FavoriteFragment">
+    tools:context=".presentation.favorite.FavoriteFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/inter_thin"
-        android:text="FAVS"
-        android:textStyle="bold" />
 
 </FrameLayout>

@@ -13,4 +13,17 @@
     <color name="yellow_100">#FAF3DC</color>
     <color name="yellow_400">#FFD02C</color>
 
+    <!-- LANGUAGE COLORS -->
+    <color name="kotlin">#F18E33</color>
+    <color name="css">#563d7c</color>
+    <color name="elixir">#6e4a7e</color>
+    <color name="go">#375eab</color>
+    <color name="java">#b07219</color>
+    <color name="javascript">#f1e05a</color>
+    <color name="php">#4F5D95</color>
+    <color name="python">#3572A5</color>
+    <color name="ruby">#701516</color>
+    <color name="scala">#DC322F</color>
+    <color name="c">#555555</color>
+    <color name="unknow">#9C9C9C</color>
 </resources>

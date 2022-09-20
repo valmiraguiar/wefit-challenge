@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit
+package com.valmiraguiar.wefit.presentation.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

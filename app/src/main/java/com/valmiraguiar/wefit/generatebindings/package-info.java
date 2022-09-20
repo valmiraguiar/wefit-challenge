@@ -1,5 +1,6 @@
 package com.valmiraguiar.wefit.generatebindings;
 
+
 import com.valmiraguiar.wefit.R;
 
 @com.airbnb.epoxy.EpoxyDataBindingLayouts(value = {
