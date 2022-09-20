@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.valmiraguiar.wefit.presentation.githubrepo.GitHubRepoListFragment"
+        android:name="com.valmiraguiar.wefit.presentation.githubrepo.GitRepoListFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_github_repo_list" />
+        tools:layout="@layout/fragment_git_repo_list" />
 
     <fragment
         android:id="@+id/navigation_favorite"

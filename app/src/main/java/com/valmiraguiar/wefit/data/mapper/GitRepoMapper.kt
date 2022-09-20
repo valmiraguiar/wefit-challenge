@@ -1,6 +1,6 @@
 package com.valmiraguiar.wefit.data.mapper
 
-import com.valmiraguiar.wefit.data.entity.GitRepoDTO
+import com.valmiraguiar.wefit.data.entity.dto.GitRepoDTO
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 
 fun GitRepoDTO.toModel() =

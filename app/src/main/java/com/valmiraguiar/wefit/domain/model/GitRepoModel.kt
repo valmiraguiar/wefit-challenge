@@ -1,11 +1,16 @@
 package com.valmiraguiar.wefit.domain.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "github_repo_table")
 data class GitRepoModel(
-    val id: Int,
-    val fullName: String,
-    val description: String,
-    val ownerAvatarUrl: String,
-    val stargazersCount: Int,
-    val language: String,
-    val htmlUrl: String
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "fullname") val fullName: String,
+    @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "owner_avatar_url") val ownerAvatarUrl: String,
+    @ColumnInfo(name = "stargazers_count") val stargazersCount: Int,
+    @ColumnInfo(name = "language") val language: String,
+    @ColumnInfo(name = "html_url") val htmlUrl: String
 )

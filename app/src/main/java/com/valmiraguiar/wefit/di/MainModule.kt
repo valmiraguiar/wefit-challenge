@@ -2,10 +2,16 @@ package com.valmiraguiar.wefit.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.valmiraguiar.wefit.data.database.GitRepoDatabase
 import com.valmiraguiar.wefit.data.repository.GitRepoRepository
 import com.valmiraguiar.wefit.data.repository.GitRepoRepositoryImpl
-import com.valmiraguiar.wefit.data.service.GitHubService
+import com.valmiraguiar.wefit.data.service.GitService
 import com.valmiraguiar.wefit.domain.usecase.ListGitRepoUseCase
+import com.valmiraguiar.wefit.presentation.favorite.FavoriteViewModel
+import com.valmiraguiar.wefit.presentation.githubrepo.GitRepoListViewModel
+import kotlinx.coroutines.Dispatchers
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -17,20 +23,26 @@ object MainModule {
     private const val BASE_URL = "https://api.github.com/users/"
 
     fun load() {
-        loadKoinModules(networkModule() + dataModule() + useCaseModule())
+        loadKoinModules(
+            networkModule() +
+                    dataModule() +
+                    daoModule() +
+                    useCaseModule() +
+                    viewModelModule()
+        )
     }
 
     private fun networkModule() = module {
         fun gsonProvider() = GsonBuilder().create()
 
         single {
-            createService<GitHubService>(BASE_URL, gsonProvider())
+            createService<GitService>(BASE_URL, gsonProvider())
         }
     }
 
     private fun dataModule() = module {
         single<GitRepoRepository> {
-            GitRepoRepositoryImpl(get())
+            GitRepoRepositoryImpl(get(), get(), Dispatchers.IO)
         }.bind()
     }
 
@@ -40,6 +52,18 @@ object MainModule {
         }
     }
 
+    private fun daoModule() = module {
+        single { GitRepoDatabase.getInstance(androidContext()).gitRepoDAO }
+    }
+
+    private fun viewModelModule() = module {
+        viewModel {
+            GitRepoListViewModel(get())
+        }
+        viewModel {
+            FavoriteViewModel(get())
+        }
+    }
 
     private inline fun <reified T> createService(
         baseUrl: String,

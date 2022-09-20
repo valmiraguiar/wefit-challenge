@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit.data.entity
+package com.valmiraguiar.wefit.data.entity.dto
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

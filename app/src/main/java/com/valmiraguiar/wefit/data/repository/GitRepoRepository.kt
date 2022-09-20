@@ -5,4 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface GitRepoRepository {
     suspend fun getReposByUser(user: String): Flow<List<GitRepoModel>>
+    suspend fun fetchFavoriteRepos(user: String): Flow<List<GitRepoModel>>
+    suspend fun saveFavoriteGitRepo(gitRepoModel: GitRepoModel)
 }

@@ -1,43 +1,46 @@
 package com.valmiraguiar.wefit.presentation.githubrepo
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import com.valmiraguiar.wefit.R
-import com.valmiraguiar.wefit.databinding.FragmentGithubRepoListBinding
+import com.valmiraguiar.wefit.databinding.FragmentGitRepoListBinding
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import com.valmiraguiar.wefit.gitRepositoryListItem
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class GitHubRepoListFragment : Fragment() {
-    private val vm by viewModels<GitHubRepoListViewModel>()
-    private lateinit var binding: FragmentGithubRepoListBinding
+class GitRepoListFragment : Fragment() {
+    private val vm: GitRepoListViewModel by viewModel()
+    private lateinit var binding: FragmentGitRepoListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentGithubRepoListBinding.inflate(inflater)
+        binding = FragmentGitRepoListBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        vm.loadRepos("appswefit")
+        val sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val user = sharedPreferences.getString("username", "appswefit")
+
+        vm.loadRepos(user!!)
 
         vm.response.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -68,9 +71,14 @@ class GitHubRepoListFragment : Fragment() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.change_user_bottom_dialog)
 
+        val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+
         val txtSelectedUser: TextInputEditText = dialog.findViewById(R.id.txt_selected_user)
         val saveButton: Button = dialog.findViewById(R.id.save_button)
         val closeButton: Button = dialog.findViewById(R.id.close_dialog_button)
+
+        val username = sharedPrefs.getString("username", "appswefit")
+        txtSelectedUser.setText(username!!)
 
         dialog.show()
         dialog.window!!.setLayout(
@@ -83,6 +91,8 @@ class GitHubRepoListFragment : Fragment() {
 
         saveButton.setOnClickListener {
             vm.loadRepos(txtSelectedUser.text.toString())
+
+            sharedPrefs.edit().putString("username", txtSelectedUser.text.toString()).apply()
             dialog.dismiss()
         }
 
@@ -129,9 +139,33 @@ class GitHubRepoListFragment : Fragment() {
 
                         val favoriteButton =
                             view.dataBinding.root.findViewById<MaterialButton>(R.id.favorite_button)
+
+                        favoriteButton.visibility = View.VISIBLE
+
                         favoriteButton.setOnClickListener {
-                            //TODO
+                            vm.saveFavoriteRepo(model)
                         }
+
+                        val imgView =
+                            view.dataBinding.root.findViewById<ImageView>(R.id.user_avatar_img)
+                        val userImgProgressBar =
+                            view.dataBinding.root.findViewById<ProgressBar>(R.id.user_img_progress_bar)
+                        Picasso.get()
+                            .load(model.ownerAvatarUrl)
+                            .error(R.drawable.ic_account_circle)
+                            .into(imgView, object : Callback {
+                                override fun onSuccess() {
+                                    userImgProgressBar.visibility = View.GONE
+                                }
+
+                                override fun onError(e: Exception?) {
+                                    userImgProgressBar.visibility = View.GONE
+                                }
+                            })
+                    }
+
+                    onUnbind { _, view ->
+                        Picasso.get().invalidate(model.ownerAvatarUrl)
                     }
 
                     clickListener { _, _, _, _ ->

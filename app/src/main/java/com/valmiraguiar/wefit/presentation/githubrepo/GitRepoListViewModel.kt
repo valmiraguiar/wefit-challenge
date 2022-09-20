@@ -9,8 +9,6 @@ import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 sealed class GitHubRepoResponse {
     object Loading : GitHubRepoResponse()
@@ -18,23 +16,38 @@ sealed class GitHubRepoResponse {
     data class Error(val e: Throwable) : GitHubRepoResponse()
 }
 
-class GitHubRepoListViewModel : ViewModel(), KoinComponent {
-    private val repository by inject<GitRepoRepository>()
+class GitRepoListViewModel(
+    private val gitRepository: GitRepoRepository
+) : ViewModel() {
     val response: MutableLiveData<GitHubRepoResponse> = MutableLiveData()
+    private var currentUser: String = ""
 
     fun loadRepos(user: String) {
         viewModelScope.launch {
             response.value = GitHubRepoResponse.Loading
+            currentUser = user
 
             withContext(Dispatchers.IO) {
                 try {
-                    repository.getReposByUser(user).collect() {
+                    gitRepository.getReposByUser(user).collect() {
                         response.postValue(GitHubRepoResponse.Success(it))
                     }
                 } catch (e: Exception) {
                     response.postValue(GitHubRepoResponse.Error(e))
                     Log.e("app ->", "error ${e.message}", e)
                 }
+            }
+        }
+    }
+
+    fun saveFavoriteRepo(gitRepoModel: GitRepoModel) {
+        viewModelScope.launch {
+            try {
+                gitRepository.saveFavoriteGitRepo(gitRepoModel)
+                loadRepos(currentUser)
+            } catch (e: Exception) {
+                response.postValue(GitHubRepoResponse.Error(e))
+                Log.e("app ->", "error ${e.message}", e)
             }
         }
     }

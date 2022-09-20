@@ -17,6 +17,8 @@
 
         <item name="android:textAppearance">@color/black</item>
         <item name="android:textAppearanceListItem">@color/gray_200</item>
+
+        <item name="progressBarStyle">@color/black</item>
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">

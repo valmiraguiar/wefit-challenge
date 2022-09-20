@@ -80,6 +80,15 @@ dependencies {
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+    implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+
     //Tests
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
