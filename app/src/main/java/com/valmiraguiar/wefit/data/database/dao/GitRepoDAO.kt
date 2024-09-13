@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit.data.entity.dao
+package com.valmiraguiar.wefit.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

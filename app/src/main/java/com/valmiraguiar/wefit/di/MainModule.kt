@@ -3,9 +3,9 @@ package com.valmiraguiar.wefit.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.valmiraguiar.wefit.data.database.GitRepoDatabase
-import com.valmiraguiar.wefit.data.repository.GitRepoRepository
+import com.valmiraguiar.wefit.domain.interfaces.repository.GitRepoRepository
 import com.valmiraguiar.wefit.data.repository.GitRepoRepositoryImpl
-import com.valmiraguiar.wefit.data.service.GitService
+import com.valmiraguiar.wefit.data.network.service.GitService
 import com.valmiraguiar.wefit.domain.usecase.ListGitRepoUseCase
 import com.valmiraguiar.wefit.presentation.favorite.FavoriteViewModel
 import com.valmiraguiar.wefit.presentation.githubrepo.GitRepoListViewModel

@@ -1,6 +1,6 @@
 package com.valmiraguiar.wefit.domain.usecase
 
-import com.valmiraguiar.wefit.data.repository.GitRepoRepository
+import com.valmiraguiar.wefit.domain.interfaces.repository.GitRepoRepository
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import kotlinx.coroutines.flow.Flow
 

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.valmiraguiar.wefit.data.repository.GitRepoRepository
+import com.valmiraguiar.wefit.domain.interfaces.repository.GitRepoRepository
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

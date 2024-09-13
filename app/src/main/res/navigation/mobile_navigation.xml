@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.valmiraguiar.wefit.presentation.githubrepo.GitRepoListFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_git_repo_list" />
+        tools:layout="@layout/fragment_git_repo_list" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_favorite2"
+            app:destination="@id/navigation_favorite" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"

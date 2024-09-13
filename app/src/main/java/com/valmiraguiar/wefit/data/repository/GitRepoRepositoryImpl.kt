@@ -1,8 +1,9 @@
 package com.valmiraguiar.wefit.data.repository
 
-import com.valmiraguiar.wefit.data.entity.dao.GitRepoDAO
+import com.valmiraguiar.wefit.data.database.dao.GitRepoDAO
 import com.valmiraguiar.wefit.data.mapper.toModel
-import com.valmiraguiar.wefit.data.service.GitService
+import com.valmiraguiar.wefit.data.network.service.GitService
+import com.valmiraguiar.wefit.domain.interfaces.repository.GitRepoRepository
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

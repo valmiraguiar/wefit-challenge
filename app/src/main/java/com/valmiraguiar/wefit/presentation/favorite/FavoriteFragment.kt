@@ -18,6 +18,7 @@ import com.valmiraguiar.wefit.R
 import com.valmiraguiar.wefit.databinding.FragmentFavoriteBinding
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import com.valmiraguiar.wefit.gitRepositoryListItem
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {

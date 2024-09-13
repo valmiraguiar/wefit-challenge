@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit
+package com.valmiraguiar.wefit.application
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.valmiraguiar.wefit.R
 import com.valmiraguiar.wefit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit
+package com.valmiraguiar.wefit.application
 
 import android.app.Application
 import com.valmiraguiar.wefit.di.MainModule

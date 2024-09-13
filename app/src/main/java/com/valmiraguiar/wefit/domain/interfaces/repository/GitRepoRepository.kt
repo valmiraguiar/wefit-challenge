@@ -1,4 +1,4 @@
-package com.valmiraguiar.wefit.data.repository
+package com.valmiraguiar.wefit.domain.interfaces.repository
 
 import com.valmiraguiar.wefit.domain.model.GitRepoModel
 import kotlinx.coroutines.flow.Flow
